@@ -8,7 +8,7 @@ export default function Navbar() {
         <Logo />
       </Link>
       <Link href="/leaderboard">
-        <button className="text-xs md:text-xl font-kenyan px-4 py-2 text-white bg-brand_accent">
+        <button className="text-xs md:text-xl font-kenyan px-4 py-2 text-brand_primary bg-brand_accent">
           CHALLENGE LEADEARBOARD
         </button>
       </Link>
