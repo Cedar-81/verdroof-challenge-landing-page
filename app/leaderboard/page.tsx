@@ -56,8 +56,11 @@ export default function Leaderboard() {
           </div>
         )}
         {data &&
-          data.by_day.map((data) => (
-            <div className="flex justify-between w-[70%] mx-auto px-6 py-4 border-b-2 border-b-black/25">
+          data.by_day.map((data, index) => (
+            <div
+              key={index}
+              className="flex justify-between w-[70%] mx-auto px-6 py-4 border-b-2 border-b-black/25"
+            >
               <h3 className="text-xl font-serenata">
                 {data.firstname + data.lastname}
               </h3>
