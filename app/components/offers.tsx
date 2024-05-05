@@ -28,8 +28,8 @@ export default function Offers({
               Find a roommate
             </h3>
             <p className="text-sm md:text-lg font-serenata">
-              Finding a roommate is hard but we’ve come up with an algorithm to
-              help you find the best roommate for you.
+              Finding a roommate is hard but we&apos;ve come up with an
+              algorithm to help you find the best roommate for you.
             </p>
           </div>
           <button
@@ -74,7 +74,7 @@ export default function Offers({
             </h3>
             <p className="text-sm md:text-lg font-serenata">
               Join other students across Nigeria to earn extra cash. All you
-              need to do is become a partner and you’re set.
+              need to do is become a partner and you&apos;re set.
             </p>
           </div>
           <button

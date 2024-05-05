@@ -70,9 +70,11 @@ export default function WaitlistForm({ setShowWaitlist }: Props) {
     <div className="fixed top-[50%] space-y-8 overflow-y-auto max-h-[90vh] font-serenata translate-y-[-50%] shadow-2xl w-[90%] md:w-[70%] bg-white z-50 left-[50%] translate-x-[-50%] text-black px-8 md:px-16 py-10 ">
       <div className="">
         <h1 className="text-xl md:text-3xl font-kenyan text-brand_primary">
-          We need a tad more information... It won’t take long we promise
+          We need a tad more information... It won&apos;t take long we promise
         </h1>
-        <h2 className="text-sm md:text-lg font-bold">Let's get started...</h2>
+        <h2 className="text-sm md:text-lg font-bold">
+          Let&apos;s get started...
+        </h2>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -228,7 +230,7 @@ export default function WaitlistForm({ setShowWaitlist }: Props) {
           </div>
           <div className="space-y-2 flex flex-col">
             <label className="text-sm md:text-lg font-bold" htmlFor="budget">
-              What's your accommodation budget?
+              What&apos;s your accommodation budget?
             </label>
             <select
               className={`border-2 px-4 py-3 outline-brand_secondary/35 ${

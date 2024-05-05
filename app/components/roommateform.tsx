@@ -74,9 +74,11 @@ export default function RoomateForm({ setShowRoomateForm }: Props) {
     <div className="fixed top-[50%] space-y-8 overflow-y-auto max-h-[80vh] font-serenata translate-y-[-50%] shadow-2xl w-[90%] md:w-[70%] bg-white z-50 left-[50%] translate-x-[-50%] text-black px-8 md:px-16 py-10 ">
       <div className="">
         <h1 className="text-xl md:text-3xl font-kenyan text-brand_primary">
-          Let's help you get the right roommate for you
+          Let&apos;s help you get the right roommate for you
         </h1>
-        <h2 className="text-sm md:text-lg font-bold">Let's get started...</h2>
+        <h2 className="text-sm md:text-lg font-bold">
+          Let&apos;s get started...
+        </h2>
       </div>
 
       <form onSubmit={handleSubmit}>
