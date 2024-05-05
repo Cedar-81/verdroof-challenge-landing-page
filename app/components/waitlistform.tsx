@@ -66,6 +66,7 @@ export default function WaitlistForm({ setShowWaitlist, refCode }: Props) {
       feedback.success
         ? alert.success(feedback.message)
         : alert.error(feedback.message);
+
       setFormData({
         firstname: "",
         lastname: "",

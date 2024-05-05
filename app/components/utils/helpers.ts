@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { supabase } from "./supabase/supabase";
+import { format } from "date-fns";
 
 interface PreorderFormData {
   firstname: string;
@@ -54,6 +55,21 @@ interface ReferralData {
 interface OperationResult {
   success: boolean;
   message: string;
+}
+
+interface RefCodeData {
+  lastname: string;
+  firstname: string;
+  point_sum: number;
+}
+
+interface RefPointsData {
+  by_day: RefCodeData[];
+  all_time: RefCodeData[];
+}
+
+interface WaitlistData {
+  ref_code: string;
 }
 
 export const insertPreorder = async (
@@ -117,7 +133,10 @@ export const insertWaitlist = async (
     if (ref_code.trim().length > 0) {
       await addReferral(ref_code);
     }
-    return { success: true, message: "Waitlist inserted successfully" };
+    return {
+      success: true,
+      message: "Waitlist inserted successfully",
+    };
   } catch (error) {
     if ((error as Error).message.includes("duplicate key value")) {
       return {
@@ -246,12 +265,147 @@ export const addReferral = async (
     }
 
     console.log("Referral added successfully:", data);
-    return { success: true, message: "Referral added successfully" };
+
+    return {
+      success: true,
+      message: "Referral added successfully",
+    };
   } catch (error) {
     console.error("Error adding referral:", (error as Error).message);
     return {
       success: false,
       message: "An error occurred in the backend. Please try again later.",
     };
+  }
+};
+
+// const getReferralPoints = async (): Promise<RefCodeData[]> => {
+//   try {
+//     // Fetch waitlist data
+//     const { data: waitlistData, error: waitlistError } = await supabase
+//       .from("waitlist")
+//       .select("ref_code");
+
+//     if (waitlistError) {
+//       throw waitlistError;
+//     }
+
+//     // Fetch referral data
+//     const { data: referralData, error: referralError } = await supabase
+//       .from("referrals")
+//       .select(`ref_code (firstname, lastname, ref_code), points`)
+//       .in(
+//         "ref_code",
+//         waitlistData.map((item) => item.ref_code)
+//       );
+
+//     if (referralError) {
+//       throw referralError;
+//     }
+
+//     // Object to store ref_code and corresponding data
+//     const refCodeDataMap: { [key: string]: RefCodeData } = {};
+
+//     // Calculate total points for each ref_code
+//     for (const { ref_code: code, points } of referralData) {
+//       // @ts-ignore
+//       const { firstname, lastname, ref_code } = code;
+//       if (!refCodeDataMap[ref_code]) {
+//         refCodeDataMap[ref_code] = {
+//           lastname,
+//           firstname,
+//           point_sum: 0,
+//         };
+//       }
+//       // Convert points to number and sum them up
+//       refCodeDataMap[ref_code].point_sum += parseInt(points);
+//     }
+
+//     // Convert object to array of key-value pairs
+//     const refCodeDataArray = Object.values(refCodeDataMap);
+
+//     // Sort array based on total points in descending order
+//     refCodeDataArray.sort((a, b) => b.point_sum - a.point_sum);
+
+//     return refCodeDataArray;
+//   } catch (error) {
+//     console.error("Error calculating referral data:", error);
+//     throw error;
+//   }
+// };
+
+export const getReferralPoints = async (): Promise<RefPointsData> => {
+  try {
+    // Fetch waitlist data
+    const { data: waitlistData, error: waitlistError } = await supabase
+      .from("waitlist")
+      .select("ref_code");
+
+    if (waitlistError) {
+      throw waitlistError;
+    }
+
+    // Fetch referral data
+    const { data: referralData, error: referralError } = await supabase
+      .from("referrals")
+      .select(`ref_code (firstname, lastname, ref_code), points, day`)
+      .in(
+        "ref_code",
+        waitlistData.map((item) => item.ref_code)
+      );
+
+    if (referralError) {
+      throw referralError;
+    }
+
+    // Object to store ref_code and corresponding data
+    const refCodeDataMapByDay: { [key: string]: RefCodeData } = {};
+    const refCodeDataMapAllTime: { [key: string]: RefCodeData } = {};
+
+    // Calculate total points for each ref_code
+    const today = format(new Date(), "yyyy-MM-dd");
+    for (const { ref_code: code, points, day } of referralData) {
+      //@ts-ignore
+      const { firstname, lastname, ref_code } = code;
+
+      // Check if the day is today
+      if (format(new Date(day), "yyyy-MM-dd") === today) {
+        if (!refCodeDataMapByDay[ref_code]) {
+          refCodeDataMapByDay[ref_code] = {
+            lastname,
+            firstname,
+            point_sum: 0,
+          };
+        }
+        // Convert points to number and sum them up
+        refCodeDataMapByDay[ref_code].point_sum += parseInt(points);
+      }
+    }
+
+    for (const { ref_code: code, points, day } of referralData) {
+      //@ts-ignore
+      const { firstname, lastname, ref_code } = code;
+      if (!refCodeDataMapAllTime[ref_code]) {
+        refCodeDataMapAllTime[ref_code] = {
+          lastname,
+          firstname,
+          point_sum: 0,
+        };
+      }
+
+      refCodeDataMapAllTime[ref_code].point_sum += parseInt(points);
+    }
+
+    // Convert object to array of key-value pairs
+    const refCodeDataArrayByDay = Object.values(refCodeDataMapByDay);
+    const refCodeDataArrayAllTime = Object.values(refCodeDataMapAllTime);
+
+    // Sort array based on total points in descending order
+    refCodeDataArrayByDay.sort((a, b) => b.point_sum - a.point_sum);
+
+    return { by_day: refCodeDataArrayByDay, all_time: refCodeDataArrayAllTime };
+  } catch (error) {
+    console.error("Error calculating referral data:", error);
+    throw error;
   }
 };
