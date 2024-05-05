@@ -15,6 +15,7 @@ export default function Home() {
   const [showRoomateForm, setShowRoomateForm] = useState(false);
   const [showPartnerForm, setShowPartnerForm] = useState(false);
   const [showPreorderForm, setShowPreorderForm] = useState(false);
+  const [waitlistEmail, setWaitlistEmail] = useState("");
 
   const options = {
     timeout: 5000,
@@ -24,14 +25,23 @@ export default function Home() {
   return (
     <Provider template={AlertTemplate} {...options}>
       <Navbar />
-      <Banner setShowWaitlist={setShowWaitlist} />
+      <Banner
+        setWaitlistEmail={setWaitlistEmail}
+        waitlistEmail={waitlistEmail}
+        setShowWaitlist={setShowWaitlist}
+      />
       <Offers
         setShowRoomateForm={setShowRoomateForm}
         setShowPartnerForm={setShowPartnerForm}
         setShowPreorderForm={setShowPreorderForm}
       />
       {showWaitlist && (
-        <WaitlistForm refCode="" setShowWaitlist={setShowWaitlist} />
+        <WaitlistForm
+          waitlistEmail={waitlistEmail}
+          refCode=""
+          setShowWaitlist={setShowWaitlist}
+          setWaitlistEmail={setWaitlistEmail}
+        />
       )}
       {showPreorderForm && (
         <PreorderForm setShowPreorderForm={setShowPreorderForm} />

@@ -4,9 +4,15 @@ import { Dispatch, SetStateAction } from "react";
 
 interface Props {
   setShowWaitlist: Dispatch<SetStateAction<boolean>>;
+  setWaitlistEmail: Dispatch<SetStateAction<string>>;
+  waitlistEmail: string;
 }
 
-export default function Banner({ setShowWaitlist }: Props) {
+export default function Banner({
+  setShowWaitlist,
+  setWaitlistEmail,
+  waitlistEmail,
+}: Props) {
   return (
     <div className="h-[60vh] relative overflow-clip">
       <Image
@@ -33,6 +39,8 @@ export default function Banner({ setShowWaitlist }: Props) {
           <input
             className=" text-black px-4 text-sm xl:text-lg w-full outline-none"
             placeholder="Enter you email to join the waitlist and Verdroof Challenge"
+            value={waitlistEmail}
+            onChange={(e) => setWaitlistEmail(e.target.value)}
             type="text"
           />
           <button

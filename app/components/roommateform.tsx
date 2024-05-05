@@ -64,7 +64,7 @@ export default function RoomateForm({ setShowRoomateForm }: Props) {
     e.preventDefault();
     // Validate the form before submitting
     if (validateForm()) {
-      console.log("Form data:", formData);
+      //console.log("Form data:", formData);
       const feedback = await insertRoomate(formData);
       feedback.success
         ? alert.success(feedback.message)
@@ -83,7 +83,7 @@ export default function RoomateForm({ setShowRoomateForm }: Props) {
       setShowRoomateForm(false);
       // You can perform further actions such as sending data to the backend here
     } else {
-      console.log("Form validation failed. Please check the fields.");
+      //console.log("Form validation failed. Please check the fields.");
     }
   };
 

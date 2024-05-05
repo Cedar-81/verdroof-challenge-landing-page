@@ -15,6 +15,7 @@ export default function Page({ params }: { params: { ref_code: string } }) {
   const [showRoomateForm, setShowRoomateForm] = useState(false);
   const [showPartnerForm, setShowPartnerForm] = useState(false);
   const [showPreorderForm, setShowPreorderForm] = useState(false);
+  const [waitlistEmail, setWaitlistEmail] = useState("");
 
   const options = {
     timeout: 5000,
@@ -24,7 +25,11 @@ export default function Page({ params }: { params: { ref_code: string } }) {
   return (
     <Provider template={AlertTemplate} {...options}>
       <Navbar />
-      <Banner setShowWaitlist={setShowWaitlist} />
+      <Banner
+        setWaitlistEmail={setWaitlistEmail}
+        waitlistEmail={waitlistEmail}
+        setShowWaitlist={setShowWaitlist}
+      />
       <Offers
         setShowRoomateForm={setShowRoomateForm}
         setShowPartnerForm={setShowPartnerForm}
@@ -32,8 +37,10 @@ export default function Page({ params }: { params: { ref_code: string } }) {
       />
       {showWaitlist && (
         <WaitlistForm
+          waitlistEmail={waitlistEmail}
           refCode={params.ref_code}
           setShowWaitlist={setShowWaitlist}
+          setWaitlistEmail={setWaitlistEmail}
         />
       )}
       {showPreorderForm && (

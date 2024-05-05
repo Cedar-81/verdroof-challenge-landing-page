@@ -4,17 +4,24 @@ import { useAlert } from "react-alert";
 
 interface Props {
   setShowWaitlist: Dispatch<SetStateAction<boolean>>;
+  setWaitlistEmail: Dispatch<SetStateAction<string>>;
   refCode: String;
+  waitlistEmail: string;
 }
 
-export default function WaitlistForm({ setShowWaitlist, refCode }: Props) {
+export default function WaitlistForm({
+  setShowWaitlist,
+  refCode,
+  waitlistEmail,
+  setWaitlistEmail,
+}: Props) {
   // Initialize state for form data and field errors
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
     gender: "male", // Default value for Gender
     phonenumber: "",
-    email: "",
+    email: waitlistEmail,
     ios: "OAU", // Default value for Institution of Study
     level: 100, // Default value for Current Level
     accommodation: "yes", // Default value for Accommodation
@@ -22,6 +29,7 @@ export default function WaitlistForm({ setShowWaitlist, refCode }: Props) {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const alert = useAlert();
+  setWaitlistEmail("");
 
   // Handle input change and update form data state
   const handleInputChange = (
@@ -61,7 +69,7 @@ export default function WaitlistForm({ setShowWaitlist, refCode }: Props) {
     e.preventDefault();
     // Validate the form before submitting
     if (validateForm()) {
-      console.log("Form data:", formData);
+      //console.log("Form data:", formData);
       const feedback = await insertWaitlist(formData, refCode as string);
       feedback.success
         ? alert.success(feedback.message)
@@ -81,7 +89,7 @@ export default function WaitlistForm({ setShowWaitlist, refCode }: Props) {
       setShowWaitlist(false);
       // You can perform further actions such as sending data to the backend here
     } else {
-      console.log("Form validation failed. Please check the fields.");
+      //console.log("Form validation failed. Please check the fields.");
     }
   };
 

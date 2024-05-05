@@ -89,7 +89,7 @@ export const insertPreorder = async (
     if (error) {
       throw error;
     }
-    console.log("Preorder inserted successfully:", data);
+    //console.log("Preorder inserted successfully:", data);
     return { success: true, message: "Preorder inserted successfully" };
   } catch (error) {
     if ((error as Error).message.includes("duplicate key value")) {
@@ -129,7 +129,7 @@ export const insertWaitlist = async (
     if (error) {
       throw error;
     }
-    console.log("Waitlist inserted successfully:", data);
+    //console.log("Waitlist inserted successfully:", data);
     if (ref_code.trim().length > 0) {
       await addReferral(ref_code);
     }
@@ -172,7 +172,7 @@ export const insertRoomate = async (
     if (error) {
       throw error;
     }
-    console.log("Roommate inserted successfully:", data);
+    //console.log("Roommate inserted successfully:", data);
     return { success: true, message: "Roommate inserted successfully" };
   } catch (error) {
     if ((error as Error).message.includes("duplicate key value")) {
@@ -208,7 +208,7 @@ export const insertPartner = async (
     if (error) {
       throw error;
     }
-    console.log("Partner inserted successfully:", data);
+    // console.log("Partner inserted successfully:", data);
     return { success: true, message: "Partner inserted successfully" };
   } catch (error) {
     if ((error as Error).message.includes("duplicate key value")) {
@@ -239,9 +239,9 @@ export const addReferral = async (
       currentDate.getHours() < 5 ||
       currentDate.getHours() > 21
     ) {
-      console.log(
-        "Current date and time do not meet criteria. Referral not added."
-      );
+      // console.log(
+      //   "Current date and time do not meet criteria. Referral not added."
+      // );
       return {
         success: false,
         message:
@@ -264,7 +264,7 @@ export const addReferral = async (
       throw error;
     }
 
-    console.log("Referral added successfully:", data);
+    //console.log("Referral added successfully:", data);
 
     return {
       success: true,

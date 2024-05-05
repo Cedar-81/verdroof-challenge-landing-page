@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Footer from "./components/footer";
 
 const kenyan_coffee = localFont({
   src: [
@@ -46,6 +47,7 @@ export default function RootLayout({
       className={`${serenata_vantages.variable} ${kenyan_coffee.variable} font-sans`}
     >
       <body>{children}</body>
+      <Footer />
     </html>
   );
 }
