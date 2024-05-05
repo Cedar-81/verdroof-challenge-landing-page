@@ -129,6 +129,8 @@ export const insertWaitlist = async (
     if (error) {
       throw error;
     }
+
+    await fetch("/api/sendEmail");
     //console.log("Waitlist inserted successfully:", data);
     if (ref_code.trim().length > 0) {
       await addReferral(ref_code);

@@ -9,6 +9,7 @@ import WaitlistForm from "./components/waitlistform";
 import RoomateForm from "./components/roommateform";
 import PartnerForm from "./components/partnerform";
 import PreorderForm from "./components/preorderform";
+import Footer from "./components/footer";
 
 export default function Home() {
   const [showWaitlist, setShowWaitlist] = useState(false);

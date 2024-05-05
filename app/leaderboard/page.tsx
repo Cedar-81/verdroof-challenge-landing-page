@@ -4,6 +4,7 @@ import Navbar from "../components/navbar";
 import { getReferralPoints } from "../components/utils/helpers";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
+import Footer from "../components/footer";
 
 interface RefCodeData {
   lastname: string;
@@ -71,6 +72,7 @@ export default function Leaderboard() {
           ))}
         <div></div>
       </div>
+      <Footer />
     </div>
   );
 }
