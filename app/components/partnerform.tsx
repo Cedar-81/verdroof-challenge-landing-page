@@ -59,6 +59,17 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
     if (validateForm()) {
       console.log("Form data:", formData);
       await insertPartner(formData);
+      setFormData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        phonenumber: "",
+        lodge_name: "",
+        location: "",
+        closest_landmark: "",
+        ios: "OAU", // Default value for Institution of Study
+      });
+      setShowPartnerForm(false);
       // You can perform further actions such as sending data to the backend here
     } else {
       console.log("Form validation failed. Please check the fields.");

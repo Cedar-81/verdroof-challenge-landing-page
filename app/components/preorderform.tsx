@@ -57,6 +57,15 @@ export default function PreorderForm({ setShowPreorderForm }: Props) {
     if (validateForm()) {
       console.log("Form data:", formData);
       await insertPreorder(formData);
+      setFormData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        phonenumber: "",
+        budget: "<N120,000",
+        ios: "OAU", // Default value for Institution of Study
+      });
+      setShowPreorderForm(false);
       // You can perform further actions such as sending data to the backend here
     } else {
       console.log("Form validation failed. Please check the fields.");

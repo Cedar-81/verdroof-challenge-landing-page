@@ -60,6 +60,18 @@ export default function WaitlistForm({ setShowWaitlist }: Props) {
     if (validateForm()) {
       console.log("Form data:", formData);
       await insertWaitlist(formData);
+      setFormData({
+        firstname: "",
+        lastname: "",
+        gender: "male", // Default value for Gender
+        phonenumber: "",
+        email: "",
+        ios: "OAU", // Default value for Institution of Study
+        level: 100, // Default value for Current Level
+        accommodation: "yes", // Default value for Accommodation
+        budget: "<N120,000", // Default value for Budget
+      });
+      setShowWaitlist(false);
       // You can perform further actions such as sending data to the backend here
     } else {
       console.log("Form validation failed. Please check the fields.");

@@ -64,6 +64,18 @@ export default function RoomateForm({ setShowRoomateForm }: Props) {
     if (validateForm()) {
       console.log("Form data:", formData);
       await insertRoomate(formData);
+      setFormData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        gender: "male", // Default value for Gender
+        phonenumber: "",
+        ios: "OAU", // Default value for Institution of Study
+        hosting_or_searching: "hosting", // Default value for Hosting or Searching
+        roomate_gender: "male", // Default value for Roommate Gender
+        roomate_number: 1, // Default value for Roommate Number
+      });
+      setShowRoomateForm(false);
       // You can perform further actions such as sending data to the backend here
     } else {
       console.log("Form validation failed. Please check the fields.");
