@@ -1,8 +1,34 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const kenyan_coffee = localFont({
+  src: [
+    {
+      path: "../public/fonts/kenyan coffee bd.otf",
+      weight: "700",
+    },
+    {
+      path: "../public/fonts/kenyan coffee rg.otf",
+      weight: "400",
+    },
+  ],
+  variable: "--font-kenyan-coffee",
+});
+
+const serenata_vantages = localFont({
+  src: [
+    {
+      path: "../public/fonts/Serenata Vantages Bold.ttf",
+      weight: "700",
+    },
+    {
+      path: "../public/fonts/Serenata Vantages Regular.ttf",
+      weight: "400",
+    },
+  ],
+  variable: "--font-serenata-vantages",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +41,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html
+      lang="en"
+      className={`${serenata_vantages.variable} ${kenyan_coffee.variable} font-sans`}
+    >
+      <body>{children}</body>
     </html>
   );
 }
