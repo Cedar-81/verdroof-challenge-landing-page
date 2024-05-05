@@ -19,7 +19,7 @@ export default function Banner({ setShowWaitlist }: Props) {
       <BannerSVG />
       <div className="relative z-20 md:w-[55%] px-10 md:mx-[50px] space-y-8 top-[50%] translate-y-[-50%]">
         <div className="space-y-3">
-          <h1 className="text-3xl md:text-5xl font-kenyan">
+          <h1 className="text-3xl md:text-4xl xl:text-5xl font-kenyan">
             Bringing <span className="text-brand_accent">eco-friendly</span>{" "}
             accommodation to students, one space at a time
           </h1>
@@ -31,7 +31,7 @@ export default function Banner({ setShowWaitlist }: Props) {
         </div>
         <div className="flex h-14">
           <input
-            className=" text-black px-4 text-sm md:text-lg w-full outline-none"
+            className=" text-black px-4 text-sm xl:text-lg w-full outline-none"
             placeholder="Enter you email to join the waitlist and Verdroof Challenge"
             type="text"
           />

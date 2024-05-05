@@ -71,7 +71,7 @@ export default function RoomateForm({ setShowRoomateForm }: Props) {
   };
 
   return (
-    <div className="fixed top-[50%] space-y-8 overflow-y-auto max-h-[80vh] font-serenata translate-y-[-50%] shadow-2xl w-[90%] md:w-[70%] bg-white z-50 left-[50%] translate-x-[-50%] text-black px-8 md:px-16 py-10 ">
+    <div className="fixed top-[50%] space-y-8 overflow-y-auto max-h-[90vh] font-serenata translate-y-[-50%] shadow-2xl w-[90%] md:w-[70%] bg-white z-50 left-[50%] translate-x-[-50%] text-black px-8 md:px-16 py-10 ">
       <div className="">
         <h1 className="text-xl md:text-3xl font-kenyan text-brand_primary">
           Let&apos;s help you get the right roommate for you
