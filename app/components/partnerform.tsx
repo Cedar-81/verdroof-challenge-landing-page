@@ -66,19 +66,19 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
   };
 
   return (
-    <div className="fixed top-[50%] space-y-8 font-serenata translate-y-[-50%] shadow-2xl w-[70%] bg-white z-50 left-[50%] translate-x-[-50%] text-black px-16 py-10 ">
+    <div className="fixed top-[50%] space-y-8 overflow-y-auto max-h-[80vh] font-serenata translate-y-[-50%] shadow-2xl w-[90%] md:w-[70%] bg-white z-50 left-[50%] translate-x-[-50%] text-black px-8 md:px-16 py-10 ">
       <div className="">
-        <h1 className="text-3xl font-kenyan text-brand_primary">
+        <h1 className="text-xl md:text-3xl font-kenyan text-brand_primary">
           Lets earn you some money while you help students like you find a place
           to stay
         </h1>
-        <h2 className="text-lg font-bold">Let's get started...</h2>
+        <h2 className="text-sm md:text-lg font-bold">Let's get started...</h2>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-x-10 gap-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
           <div className="space-y-2 flex flex-col">
-            <label className="text-lg font-bold" htmlFor="firstname">
+            <label className="text-sm md:text-lg font-bold" htmlFor="firstname">
               Firstname
             </label>
             <input
@@ -96,7 +96,7 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
             )}
           </div>
           <div className="space-y-2 flex flex-col">
-            <label className="text-lg font-bold" htmlFor="lastname">
+            <label className="text-sm md:text-lg font-bold" htmlFor="lastname">
               Lastname
             </label>
             <input
@@ -114,7 +114,7 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
             )}
           </div>
           <div className="space-y-2 flex flex-col">
-            <label className="text-lg font-bold" htmlFor="email">
+            <label className="text-sm md:text-lg font-bold" htmlFor="email">
               Email
             </label>
             <input
@@ -130,7 +130,10 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
             {errors.email && <p className="text-red-500">{errors.email}</p>}
           </div>
           <div className="space-y-2 flex flex-col">
-            <label className="text-lg font-bold" htmlFor="phonenumber">
+            <label
+              className="text-sm md:text-lg font-bold"
+              htmlFor="phonenumber"
+            >
               Phone/Whatsapp Number
             </label>
             <input
@@ -147,7 +150,10 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
             )}
           </div>
           <div className="space-y-2 flex flex-col">
-            <label className="text-lg font-bold" htmlFor="lodge_name">
+            <label
+              className="text-sm md:text-lg font-bold"
+              htmlFor="lodge_name"
+            >
               Lodge name
             </label>
             <input
@@ -164,7 +170,7 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
             )}
           </div>
           <div className="space-y-2 flex flex-col">
-            <label className="text-lg font-bold" htmlFor="location">
+            <label className="text-sm md:text-lg font-bold" htmlFor="location">
               Lodge Location
             </label>
             <input
@@ -181,7 +187,10 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
             )}
           </div>
           <div className="space-y-2 flex flex-col">
-            <label className="text-lg font-bold" htmlFor="closest_landmark">
+            <label
+              className="text-sm md:text-lg font-bold"
+              htmlFor="closest_landmark"
+            >
               Closest Landmark
             </label>
             <input
@@ -198,7 +207,7 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
             )}
           </div>
           <div className="space-y-2 flex flex-col">
-            <label className="text-lg font-bold" htmlFor="ios">
+            <label className="text-sm md:text-lg font-bold" htmlFor="ios">
               Institution of Study
             </label>
             <select
@@ -221,13 +230,13 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
         <div className="w-full flex justify-end mt-8">
           <button
             onClick={() => setShowPartnerForm(false)}
-            className="text-xl mr-4 relative font-kenyan px-8 text-brand_primary py-2 border-2 border-transparent hover:border-red-300"
+            className="md:text-xl mr-4 relative font-kenyan px-8 text-brand_primary py-2 border-2 border-transparent hover:border-red-300"
           >
             Close
           </button>
           <button
             type="submit"
-            className="text-xl relative font-kenyan px-4 py-2 text-white bg-brand_primary"
+            className="md:text-xl relative font-kenyan px-4 py-2 text-white bg-brand_primary"
           >
             All done? Submit
           </button>
