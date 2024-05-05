@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { insertRoomate } from "./utils/helpers";
+import { useAlert } from "react-alert";
 
 interface Props {
   setShowRoomateForm: Dispatch<SetStateAction<boolean>>;
@@ -19,6 +20,7 @@ export default function RoomateForm({ setShowRoomateForm }: Props) {
     roomate_number: 1, // Default value for Roommate Number
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const alert = useAlert();
 
   // Handle input change and update form data state
   const handleInputChange = (
@@ -63,7 +65,10 @@ export default function RoomateForm({ setShowRoomateForm }: Props) {
     // Validate the form before submitting
     if (validateForm()) {
       console.log("Form data:", formData);
-      await insertRoomate(formData);
+      const feedback = await insertRoomate(formData);
+      feedback.success
+        ? alert.success(feedback.message)
+        : alert.error(feedback.message);
       setFormData({
         firstname: "",
         lastname: "",

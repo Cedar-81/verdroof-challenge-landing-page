@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { insertPartner } from "./utils/helpers";
+import { useAlert } from "react-alert";
 
 interface Props {
   setShowPartnerForm: Dispatch<SetStateAction<boolean>>;
@@ -18,6 +19,7 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
     ios: "OAU", // Default value for Institution of Study
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const alert = useAlert();
 
   // Handle input change and update form data state
   const handleInputChange = (
@@ -58,7 +60,10 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
     // Validate the form before submitting
     if (validateForm()) {
       console.log("Form data:", formData);
-      await insertPartner(formData);
+      const feedback = await insertPartner(formData);
+      feedback.success
+        ? alert.success(feedback.message)
+        : alert.error(feedback.message);
       setFormData({
         firstname: "",
         lastname: "",

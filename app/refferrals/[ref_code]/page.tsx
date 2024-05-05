@@ -2,15 +2,15 @@
 import { useState } from "react";
 import { positions, Provider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
-import Banner from "./components/banner";
-import Navbar from "./components/navbar";
-import Offers from "./components/offers";
-import WaitlistForm from "./components/waitlistform";
-import RoomateForm from "./components/roommateform";
-import PartnerForm from "./components/partnerform";
-import PreorderForm from "./components/preorderform";
+import Banner from "@/app/components/banner";
+import Navbar from "@/app/components/navbar";
+import Offers from "@/app/components/offers";
+import PartnerForm from "@/app/components/partnerform";
+import PreorderForm from "@/app/components/preorderform";
+import RoomateForm from "@/app/components/roommateform";
+import WaitlistForm from "@/app/components/waitlistform";
 
-export default function Home() {
+export default function Page({ params }: { params: { ref_code: string } }) {
   const [showWaitlist, setShowWaitlist] = useState(false);
   const [showRoomateForm, setShowRoomateForm] = useState(false);
   const [showPartnerForm, setShowPartnerForm] = useState(false);
@@ -31,7 +31,10 @@ export default function Home() {
         setShowPreorderForm={setShowPreorderForm}
       />
       {showWaitlist && (
-        <WaitlistForm refCode="" setShowWaitlist={setShowWaitlist} />
+        <WaitlistForm
+          refCode={params.ref_code}
+          setShowWaitlist={setShowWaitlist}
+        />
       )}
       {showPreorderForm && (
         <PreorderForm setShowPreorderForm={setShowPreorderForm} />

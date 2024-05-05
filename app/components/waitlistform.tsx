@@ -1,11 +1,13 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { insertWaitlist } from "./utils/helpers";
+import { useAlert } from "react-alert";
 
 interface Props {
   setShowWaitlist: Dispatch<SetStateAction<boolean>>;
+  refCode: String;
 }
 
-export default function WaitlistForm({ setShowWaitlist }: Props) {
+export default function WaitlistForm({ setShowWaitlist, refCode }: Props) {
   // Initialize state for form data and field errors
   const [formData, setFormData] = useState({
     firstname: "",
@@ -19,6 +21,7 @@ export default function WaitlistForm({ setShowWaitlist }: Props) {
     budget: "<N120,000", // Default value for Budget
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const alert = useAlert();
 
   // Handle input change and update form data state
   const handleInputChange = (
@@ -59,7 +62,10 @@ export default function WaitlistForm({ setShowWaitlist }: Props) {
     // Validate the form before submitting
     if (validateForm()) {
       console.log("Form data:", formData);
-      await insertWaitlist(formData);
+      const feedback = await insertWaitlist(formData, refCode as string);
+      feedback.success
+        ? alert.success(feedback.message)
+        : alert.error(feedback.message);
       setFormData({
         firstname: "",
         lastname: "",
