@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <div className=" px-10 h-max border-2 z-40 bg-black md:px-[50px] py-4 space-y-6 text-white flex flex-col md:flex-row justify-between items-center md:items-start">
+    <div className=" px-10 h-max z-40 bg-black md:px-[50px] py-4 space-y-6 text-white flex flex-col md:flex-row justify-between items-center md:items-start">
       <div className="flex flex-col md:space-between md:space-y-2 items-center md:items-end">
         <h4 className="text-lg md:text-xl font-kenyan">
           There is a place for you at{" "}

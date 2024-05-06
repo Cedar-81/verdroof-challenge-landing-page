@@ -249,7 +249,7 @@ export const addReferral = async (
       currentDate < startDate ||
       currentDate > endDate ||
       currentDate.getHours() < 5 ||
-      currentDate.getHours() > 21
+      currentDate.getHours() > 24
     ) {
       // console.log(
       //   "Current date and time do not meet criteria. Referral not added."

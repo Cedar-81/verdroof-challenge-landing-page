@@ -82,7 +82,7 @@ export const template = ({
   <div class="header"></div>
   <div class="container">
     <h1>Welcome to the Verdroof 20 days Challenge</h1>
-    <p>Hey ${user_name}! Welcome aboard!</p>
+    <p>Hey ${user_name}! Welcome onboard!</p>
     <p>We're thrilled to have you join Verdroof. Here's your special referral link for our ongoing 20 days challenge: <a href=${ref_link}>${ref_link}</a>.</p>
     <p>Be sure to follow us on our social media handles:</p>
     <ul>
@@ -93,7 +93,7 @@ export const template = ({
     </ul>
     <p>Looking for a roommate? <a href=${roomie_link}>Click here</a></p>
     <p>Wanna help save the planet? <a href=${planet_link}>Click here</a></p>
-    <p>To earn extra with us <a href=${earn_link}>Click here</a></p>
+    <p>To earn extra with cash us <a href=${earn_link}>Click here</a></p>
   </div>
 </body>
 </html>
@@ -114,7 +114,7 @@ export const templateText = ({
 }: TemplateArgs) => `
 Welcome to the Verdroof 20 days Challenge
 
-Hey ${user_name}! Welcome aboard!
+Hey ${user_name}! Welcome onboard!
 
 We're thrilled to have you join Verdroof. Here's your special referral link for our ongoing 20 days challenge: ${ref_link}.
 
@@ -129,5 +129,5 @@ Looking for a roommate? Click here: ${roomie_link}
 
 Wanna help save the planet? Click here: ${planet_link}
 
-To earn extra with us, click here: ${earn_link}
+To earn extra cash with us, click here: ${earn_link}
 `;
