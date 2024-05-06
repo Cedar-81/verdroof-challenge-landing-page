@@ -38,7 +38,7 @@ export default function Banner({
         <div className="flex h-14">
           <input
             className=" text-black px-4 text-sm xl:text-lg w-full outline-none"
-            placeholder="Enter you email to join the waitlist and Verdroof Challenge"
+            placeholder="Enter your email to join the waitlist and Verdroof Challenge"
             value={waitlistEmail}
             onChange={(e) => setWaitlistEmail(e.target.value)}
             type="text"

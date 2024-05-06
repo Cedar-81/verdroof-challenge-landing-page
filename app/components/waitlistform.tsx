@@ -113,9 +113,7 @@ export default function WaitlistForm({
         <h1 className="text-xl md:text-3xl font-kenyan text-brand_primary">
           We need a tad more information... It won&apos;t take long we promise
         </h1>
-        <h2 className="text-sm md:text-lg font-bold">
-          Let&apos;s get started...
-        </h2>
+        <h2 className="text-sm md:text-lg font-bold">Get started...</h2>
       </div>
 
       <form onSubmit={handleSubmit}>

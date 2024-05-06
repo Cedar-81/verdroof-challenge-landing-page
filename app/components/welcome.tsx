@@ -27,10 +27,21 @@ export default function Welcome({ setShowWelcome }: Props) {
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-center">
             <p>👉 Share your referral link on your social media platforms </p>
             <div className="flex space-x-3 items-center justify-between w-[10em]">
-              <Facebook className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
-              <Instagram className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
-              <Twitter className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
-              <Linkedin className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+              <a target="_blank" href="https://facebook.com/verdroof">
+                <Facebook className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+              </a>
+              <a target="_blank" href="https://www.instagram.com/verdroof/">
+                <Instagram className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+              </a>
+              <a target="_blank" href="https://twitter.com/Verdroof">
+                <Twitter className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/company/verdroof/"
+              >
+                <Linkedin className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+              </a>
             </div>
           </div>
           <p>👉 Refer friends and room-mates to share and engage </p>

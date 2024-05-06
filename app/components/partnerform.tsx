@@ -91,9 +91,7 @@ export default function PartnerForm({ setShowPartnerForm }: Props) {
           Let&apos;s earn you some money while you help students like you find a
           place to stay
         </h1>
-        <h2 className="text-sm md:text-lg font-bold">
-          Let&apos;s get started...
-        </h2>
+        <h2 className="text-sm md:text-lg font-bold">Get started...</h2>
       </div>
 
       <form onSubmit={handleSubmit}>

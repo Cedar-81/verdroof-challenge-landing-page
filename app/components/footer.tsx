@@ -18,10 +18,18 @@ export default function Footer() {
           Do well to follow us on our social media handles
         </h5>
         <div className="flex space-x-3 items-center justify-between w-[10em]">
-          <Facebook className="hover:cursor-pointer hover:text-brand_secondary" />
-          <Instagram className="hover:cursor-pointer hover:text-brand_secondary" />
-          <Twitter className="hover:cursor-pointer hover:text-brand_secondary" />
-          <Linkedin className="hover:cursor-pointer hover:text-brand_secondary" />
+          <a target="_blank" href="https://facebook.com/verdroof">
+            <Facebook className="hover:cursor-pointer hover:text-brand_secondary" />
+          </a>
+          <a target="_blank" href="https://www.instagram.com/verdroof/">
+            <Instagram className="hover:cursor-pointer hover:text-brand_secondary" />
+          </a>
+          <a target="_blank" href="https://twitter.com/Verdroof">
+            <Twitter className="hover:cursor-pointer hover:text-brand_secondary" />
+          </a>
+          <a target="_blank" href="https://www.linkedin.com/company/verdroof/">
+            <Linkedin className="hover:cursor-pointer hover:text-brand_secondary" />
+          </a>
         </div>
       </div>
     </div>
