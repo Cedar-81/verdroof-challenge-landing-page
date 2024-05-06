@@ -5,6 +5,8 @@ import { useAlert } from "react-alert";
 interface Props {
   setShowWaitlist: Dispatch<SetStateAction<boolean>>;
   setWaitlistEmail: Dispatch<SetStateAction<string>>;
+  setShowRefPopup: Dispatch<SetStateAction<boolean>>;
+  setReferallCode: Dispatch<SetStateAction<string>>;
   refCode: String;
   waitlistEmail: string;
 }
@@ -14,6 +16,8 @@ export default function WaitlistForm({
   refCode,
   waitlistEmail,
   setWaitlistEmail,
+  setShowRefPopup,
+  setReferallCode,
 }: Props) {
   // Initialize state for form data and field errors
   const [formData, setFormData] = useState({
@@ -28,6 +32,7 @@ export default function WaitlistForm({
     budget: "<N120,000", // Default value for Budget
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isLoading, setIsLoading] = useState(false);
   const alert = useAlert();
   setWaitlistEmail("");
 
@@ -64,16 +69,24 @@ export default function WaitlistForm({
     return Object.keys(newErrors).length === 0;
   };
 
+  // const sendEmail = async () => {
+  //   "use server";
+  //   await sendMail();
+  // };
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Validate the form before submitting
     if (validateForm()) {
+      setIsLoading(true);
       //console.log("Form data:", formData);
       const feedback = await insertWaitlist(formData, refCode as string);
       feedback.success
         ? alert.success(feedback.message)
         : alert.error(feedback.message);
+      feedback.success && feedback.data && setReferallCode(feedback.data);
+      feedback.success && feedback.data && setShowRefPopup(true);
 
       setFormData({
         firstname: "",
@@ -87,6 +100,7 @@ export default function WaitlistForm({
         budget: "<N120,000", // Default value for Budget
       });
       setShowWaitlist(false);
+      setIsLoading(false);
       // You can perform further actions such as sending data to the backend here
     } else {
       //console.log("Form validation failed. Please check the fields.");
@@ -291,12 +305,23 @@ export default function WaitlistForm({
           >
             Close
           </button>
-          <button
-            type="submit"
-            className="md:text-xl relative font-kenyan px-4 py-2 text-white bg-brand_primary"
-          >
-            All done? Submit
-          </button>
+          {!isLoading && (
+            <button
+              type="submit"
+              className="md:text-xl relative font-kenyan px-4 py-2 text-white bg-brand_primary"
+            >
+              All done? Submit
+            </button>
+          )}
+          {isLoading && (
+            <button
+              type="submit"
+              className="md:text-xl relative font-kenyan px-4 py-2 text-white bg-brand_primary/10"
+              disabled
+            >
+              A moment please...
+            </button>
+          )}
         </div>
       </form>
     </div>

@@ -10,12 +10,17 @@ import RoomateForm from "./components/roommateform";
 import PartnerForm from "./components/partnerform";
 import PreorderForm from "./components/preorderform";
 import Footer from "./components/footer";
+import Welcome from "./components/welcome";
+import ReferralCode from "./components/referralcode";
 
 export default function Home() {
   const [showWaitlist, setShowWaitlist] = useState(false);
   const [showRoomateForm, setShowRoomateForm] = useState(false);
   const [showPartnerForm, setShowPartnerForm] = useState(false);
   const [showPreorderForm, setShowPreorderForm] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
+  const [showRefPopup, setshowRefPopup] = useState(false);
+  const [referallCode, setReferallCode] = useState("");
   const [waitlistEmail, setWaitlistEmail] = useState("");
 
   const options = {
@@ -42,6 +47,8 @@ export default function Home() {
           refCode=""
           setShowWaitlist={setShowWaitlist}
           setWaitlistEmail={setWaitlistEmail}
+          setShowRefPopup={setshowRefPopup}
+          setReferallCode={setReferallCode}
         />
       )}
       {showPreorderForm && (
@@ -53,6 +60,13 @@ export default function Home() {
       {showRoomateForm && (
         <RoomateForm setShowRoomateForm={setShowRoomateForm} />
       )}
+      {showRefPopup && (
+        <ReferralCode
+          ref_code={referallCode as string}
+          setShowRefPopup={setshowRefPopup}
+        />
+      )}
+      {showWelcome && <Welcome setShowWelcome={setShowWelcome} />}
     </Provider>
   );
 }

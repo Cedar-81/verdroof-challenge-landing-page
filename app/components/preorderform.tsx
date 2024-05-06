@@ -17,6 +17,7 @@ export default function PreorderForm({ setShowPreorderForm }: Props) {
     ios: "OAU", // Default value for Institution of Study
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isLoading, setIsLoading] = useState(false);
   const alert = useAlert();
 
   // Handle input change and update form data state
@@ -55,6 +56,7 @@ export default function PreorderForm({ setShowPreorderForm }: Props) {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     // Validate the form before submitting
     if (validateForm()) {
       //console.log("Form data:", formData);
@@ -62,6 +64,7 @@ export default function PreorderForm({ setShowPreorderForm }: Props) {
       feedback.success
         ? alert.success(feedback.message)
         : alert.error(feedback.message);
+      setIsLoading(false);
       setFormData({
         firstname: "",
         lastname: "",
@@ -218,12 +221,23 @@ export default function PreorderForm({ setShowPreorderForm }: Props) {
           >
             Close
           </button>
-          <button
-            type="submit"
-            className="md:text-xl relative font-kenyan px-4 py-2 text-white bg-brand_primary"
-          >
-            All done? Submit
-          </button>
+          {!isLoading && (
+            <button
+              type="submit"
+              className="md:text-xl relative font-kenyan px-4 py-2 text-white bg-brand_primary"
+            >
+              All done? Submit
+            </button>
+          )}
+          {isLoading && (
+            <button
+              type="submit"
+              className="md:text-xl relative font-kenyan px-4 py-2 text-white bg-brand_primary/10"
+              disabled
+            >
+              A moment please...
+            </button>
+          )}
         </div>
       </form>
     </div>

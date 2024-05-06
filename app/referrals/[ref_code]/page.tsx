@@ -9,6 +9,8 @@ import PartnerForm from "@/app/components/partnerform";
 import PreorderForm from "@/app/components/preorderform";
 import RoomateForm from "@/app/components/roommateform";
 import WaitlistForm from "@/app/components/waitlistform";
+import ReferralCode from "@/app/components/referralcode";
+import Welcome from "@/app/components/welcome";
 
 export default function Page({ params }: { params: { ref_code: string } }) {
   const [showWaitlist, setShowWaitlist] = useState(false);
@@ -16,6 +18,9 @@ export default function Page({ params }: { params: { ref_code: string } }) {
   const [showPartnerForm, setShowPartnerForm] = useState(false);
   const [showPreorderForm, setShowPreorderForm] = useState(false);
   const [waitlistEmail, setWaitlistEmail] = useState("");
+  const [showRefPopup, setshowRefPopup] = useState(false);
+  const [referallCode, setReferallCode] = useState("");
+  const [showWelcome, setShowWelcome] = useState(true);
 
   const options = {
     timeout: 5000,
@@ -41,6 +46,8 @@ export default function Page({ params }: { params: { ref_code: string } }) {
           refCode={params.ref_code}
           setShowWaitlist={setShowWaitlist}
           setWaitlistEmail={setWaitlistEmail}
+          setShowRefPopup={setshowRefPopup}
+          setReferallCode={setReferallCode}
         />
       )}
       {showPreorderForm && (
@@ -52,6 +59,13 @@ export default function Page({ params }: { params: { ref_code: string } }) {
       {showRoomateForm && (
         <RoomateForm setShowRoomateForm={setShowRoomateForm} />
       )}
+      {showRefPopup && (
+        <ReferralCode
+          ref_code={referallCode as string}
+          setShowRefPopup={setshowRefPopup}
+        />
+      )}
+      {showWelcome && <Welcome setShowWelcome={setShowWelcome} />}
     </Provider>
   );
 }

@@ -55,6 +55,7 @@ interface ReferralData {
 interface OperationResult {
   success: boolean;
   message: string;
+  data?: string;
 }
 
 interface RefCodeData {
@@ -68,8 +69,10 @@ interface RefPointsData {
   all_time: RefCodeData[];
 }
 
-interface WaitlistData {
+export interface EmailFormData {
+  email: string;
   ref_code: string;
+  name: string;
 }
 
 export const insertPreorder = async (
@@ -130,14 +133,21 @@ export const insertWaitlist = async (
       throw error;
     }
 
-    await fetch("/api/sendEmail");
     //console.log("Waitlist inserted successfully:", data);
     if (ref_code.trim().length > 0) {
       await addReferral(ref_code);
     }
+
+    await mailer({
+      email: formData.email,
+      ref_code: new_ref_code,
+      name: `${formData.lastname} ${formData.firstname}`,
+    });
+
     return {
       success: true,
       message: "Waitlist inserted successfully",
+      data: new_ref_code,
     };
   } catch (error) {
     if ((error as Error).message.includes("duplicate key value")) {
@@ -146,7 +156,7 @@ export const insertWaitlist = async (
         message: "Email or Mobile Number already exists.",
       };
     }
-    console.error("Error inserting waitlist:", (error as Error).message);
+    // console.error("Error inserting waitlist:", (error as Error).message);
     return {
       success: false,
       message: "An error occurred in the backend. Please try again later.",
@@ -409,5 +419,27 @@ export const getReferralPoints = async (): Promise<RefPointsData> => {
   } catch (error) {
     console.error("Error calculating referral data:", error);
     throw error;
+  }
+};
+
+export const mailer = async (formData: EmailFormData) => {
+  console.log("in here", formData);
+  try {
+    const response = await fetch("/api/sendEmail", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send message");
+    }
+
+    return response.json();
+  } catch (error) {
+    throw new Error("Failed to send message: " + (error as Error).message);
   }
 };
