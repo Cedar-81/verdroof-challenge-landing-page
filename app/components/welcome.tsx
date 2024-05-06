@@ -1,4 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  MessageSquareDot,
+} from "lucide-react";
 
 interface Props {
   setShowWelcome: Dispatch<SetStateAction<boolean>>;
@@ -17,9 +24,20 @@ export default function Welcome({ setShowWelcome }: Props) {
         <div className="flex flex-col space-y-8 text-lg font-serenata">
           <p>👉 Join our wait-list </p>
           <p>👉 Follow us on our social media handles </p>
-          <p>👉 Share your referral link on your social media platforms </p>
+          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-center">
+            <p>👉 Share your referral link on your social media platforms </p>
+            <div className="flex space-x-3 items-center justify-between w-[10em]">
+              <Facebook className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+              <Instagram className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+              <Twitter className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+              <Linkedin className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+            </div>
+          </div>
           <p>👉 Refer friends and room-mates to share and engage </p>
-          <p>👉 Join and engage on our WhatsApp community </p>
+          <div className="flex space-x-6 items-center">
+            <p>👉 Join and engage on our WhatsApp community </p>
+            <MessageSquareDot className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+          </div>
         </div>
       </div>
       <div className="w-full flex justify-end mt-8">
