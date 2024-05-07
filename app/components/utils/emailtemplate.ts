@@ -69,6 +69,7 @@ export const template = ({
       text-decoration: underline;
     }
     .header {
+      margin: auto;
       background-image: url('https://fszrfqmgzavpnfgcviev.supabase.co/storage/v1/object/public/verdroof_font_bucket/emailheader.png');
       background-size: cover;
       background-position: center;

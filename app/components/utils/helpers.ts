@@ -249,7 +249,7 @@ export const addReferral = async (
       currentDate < startDate ||
       currentDate > endDate ||
       currentDate.getHours() < 5 ||
-      currentDate.getHours() > 24
+      currentDate.getHours() > 21
     ) {
       // console.log(
       //   "Current date and time do not meet criteria. Referral not added."
@@ -260,6 +260,8 @@ export const addReferral = async (
           "Referral not added. Current date and time do not meet criteria.",
       };
     }
+
+    console.log("you are out of time sorry");
 
     // Construct the referral data object
     const referralData: ReferralData = {
@@ -423,7 +425,7 @@ export const getReferralPoints = async (): Promise<RefPointsData> => {
 };
 
 export const mailer = async (formData: EmailFormData) => {
-  console.log("in here", formData);
+  // console.log("in here", formData);
   try {
     const response = await fetch("/api/sendEmail", {
       method: "POST",

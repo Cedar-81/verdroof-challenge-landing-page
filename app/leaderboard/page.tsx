@@ -44,7 +44,7 @@ export default function Leaderboard() {
         alt="background texture"
         className="object-cover absolute h-full w-full mix-blend-multiply opacity-5"
       />
-      <div className="min-h-[60vh]">
+      <div className="min-h-[90vh] md:pt-20">
         <div className="w-[90%] md:w-[70%] mx-auto px-10 md:px-[50px] mt-20 flex flex-col md:flex-row justify-between items-center ">
           <h1 className="text-xl md:text-3xl font-kenyan">
             Here are the scores earned so far

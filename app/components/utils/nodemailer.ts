@@ -23,14 +23,14 @@ export async function sendMail({
     },
   });
 
-  console.log(
-    "argsData: ",
-    process.env.SMTP_EMAIL,
-    process.env.SMTP_PASS,
-    email,
-    ref_code,
-    name
-  );
+  // console.log(
+  //     "argsData: ",
+  //     process.env.SMTP_EMAIL,
+  //     process.env.SMTP_PASS,
+  //     email,
+  //     ref_code,
+  //     name
+  //   );
 
   try {
     await transport.verify(); // Test SMTP connection
@@ -50,10 +50,10 @@ export async function sendMail({
       linkedin_link: "https://www.linkedin.com/company/verdroof/",
       facebook_link: "https://facebook.com/verdroof",
       user_name: name,
-      ref_link: `https://challenge.verdroof.com/referrals/${ref_code}`,
-      roomie_link: "https://challenge.verdroof.com/",
-      planet_link: "https://challenge.verdroof.com/",
-      earn_link: "https://challenge.verdroof.com/",
+      ref_link: `https://verdroof-challenge.vercel.app/referrals/${ref_code}`,
+      roomie_link: "https://verdroof-challenge.vercel.app/",
+      planet_link: "https://verdroof-challenge.vercel.app/",
+      earn_link: "https://verdroof-challenge.vercel.app/",
     }) as string,
     html: template({
       insta_link: "https://www.instagram.com/verdroof/",
@@ -61,10 +61,10 @@ export async function sendMail({
       linkedin_link: "https://www.linkedin.com/company/verdroof/",
       facebook_link: "https://facebook.com/verdroof",
       user_name: name,
-      ref_link: `https://challenge.verdroof.com/referrals/${ref_code}`,
-      roomie_link: "https://challenge.verdroof.com/",
-      planet_link: "https://challenge.verdroof.com/",
-      earn_link: "https://challenge.verdroof.com/",
+      ref_link: `https://verdroof-challenge.vercel.app/referrals/${ref_code}`,
+      roomie_link: "https://verdroof-challenge.vercel.app/",
+      planet_link: "https://verdroof-challenge.vercel.app/",
+      earn_link: "https://verdroof-challenge.vercel.app/",
     }) as string,
   };
 

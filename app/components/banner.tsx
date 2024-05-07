@@ -14,7 +14,7 @@ export default function Banner({
   waitlistEmail,
 }: Props) {
   return (
-    <div className="h-[70vh] md:h-[60vh] relative border-white overflow-clip z-50">
+    <div className="h-[70vh] md:h-[60vh] relative border-white overflow-clip">
       <Image
         src={"/assets/banner.png"}
         width="1512"
