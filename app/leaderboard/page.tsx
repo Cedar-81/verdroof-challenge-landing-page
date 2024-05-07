@@ -68,7 +68,7 @@ export default function Leaderboard() {
                 <h3 className="text-sm w-[90%] overflow-clip md:text-xl font-serenata">
                   {data.firstname + data.lastname}
                 </h3>
-                <p className="text-lg font-kenyan">{data.point_sum}</p>
+                <p className="text-lg font-kenyan">{data.point_sum} pts</p>
               </div>
             ))}
           <div></div>

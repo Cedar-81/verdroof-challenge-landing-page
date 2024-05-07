@@ -33,7 +33,7 @@ export default function ReferralCode({ setShowRefPopup, ref_code }: Props) {
 
         <p className="text-sm md:text-base">
           👉 Share your referral link on your social media platforms and make
-          sure join and engage in our WhatsApp community{" "}
+          sure to join and engage in our WhatsApp community{" "}
           <a
             target="_blank"
             href="https://chat.whatsapp.com/EctCcLosA1X2rl0hMhPYWc"
