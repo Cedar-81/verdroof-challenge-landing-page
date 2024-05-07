@@ -13,7 +13,7 @@ export default function ReferralCode({ setShowRefPopup, ref_code }: Props) {
     try {
       // Copy the value of the input field to the clipboard
       await navigator.clipboard.writeText(
-        `https://verdroof-challenge.vercel.app/referrals/${ref_code}`
+        `https://verdroof.com/referrals/${ref_code}`
       );
       // Optionally, you can show a success message here
       alert.success("Referral link copied to clipboard");
@@ -48,8 +48,8 @@ export default function ReferralCode({ setShowRefPopup, ref_code }: Props) {
           <div className="flex h-14">
             <input
               className="text-black px-4 text-sm xl:text-lg w-[25rem] outline-none"
-              placeholder={`https://verdroof-challenge.vercel.app/referrals/${ref_code}`}
-              value={`https://verdroof-challenge.vercel.app/referrals/${ref_code}`}
+              placeholder={`https://verdroof.com/referrals/${ref_code}`}
+              value={`https://verdroof.com/referrals/${ref_code}`}
               disabled
               type="text"
             />
