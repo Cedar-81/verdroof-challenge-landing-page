@@ -1,3 +1,4 @@
+import { MessageSquareDot } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 import { useAlert } from "react-alert";
 
@@ -25,9 +26,23 @@ export default function ReferralCode({ setShowRefPopup, ref_code }: Props) {
 
   return (
     <div className="fixed top-[50%] space-y-8 overflow-y-auto max-h-[90vh] font-serenata translate-y-[-50%] shadow-2xl w-[90%] md:w-[60%] bg-white z-50 left-[50%] translate-x-[-50%] text-black px-8 md:px-16 py-10 ">
-      <h1 className="text-xl md:text-3xl font-kenyan text-brand_primary">
-        Here is your referral code
-      </h1>
+      <div className="space-y-4">
+        <h1 className="text-xl md:text-3xl font-kenyan text-brand_primary">
+          Here is your referral code
+        </h1>
+
+        <p className="text-sm md:text-base">
+          👉 Share your referral link on your social media platforms and make
+          sure join and engage in our WhatsApp community{" "}
+          <a
+            target="_blank"
+            href="https://chat.whatsapp.com/EctCcLosA1X2rl0hMhPYWc"
+          >
+            <MessageSquareDot className="hover:cursor-pointer inline ml-2 hover:text-brand_secondary h-4 md:h-10" />
+          </a>
+        </p>
+      </div>
+
       <div className="space-y-4">
         <div className="flex flex-col space-y-8 text-lg font-serenata">
           <div className="flex h-14">

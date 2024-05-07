@@ -22,13 +22,9 @@ export default function Welcome({ setShowWelcome }: Props) {
           Follow these steps: 🫡
         </h2>
         <div className="flex flex-col space-y-6 md:space-y-8 text-lg font-serenata">
-          <p className="text-sm md:text-base">👉 Join our wait-list </p>
-          <p className="text-sm md:text-base">
-            👉 Follow us on our social media handles{" "}
-          </p>
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-start md:items-center">
             <p className="text-sm md:text-base">
-              👉 Share your referral link on your social media platforms{" "}
+              👉 Follow us on our social media handles{" "}
             </p>
             <div className="flex space-x-3 items-center justify-between w-[10em]">
               <a target="_blank" href="https://facebook.com/verdroof">
@@ -49,13 +45,24 @@ export default function Welcome({ setShowWelcome }: Props) {
             </div>
           </div>
           <p className="text-sm md:text-base">
+            👉 Fill in your email below to join our waitlist{" "}
+          </p>
+          <p className="text-sm md:text-base">
+            👉 Share your referral link on your social media platforms{" "}
+          </p>
+          <p className="text-sm md:text-base">
             👉 Refer friends and room-mates to share and engage{" "}
           </p>
-          <div className="flex space-x-6 items-center">
+          <div className="flex space-x-4 md:space-x-6 items-center">
             <p className="text-sm md:text-base">
               👉 Join and engage on our WhatsApp community{" "}
             </p>
-            <MessageSquareDot className="hover:cursor-pointer hover:text-brand_secondary h-4 md:h-10" />
+            <a
+              target="_blank"
+              href="https://chat.whatsapp.com/EctCcLosA1X2rl0hMhPYWc"
+            >
+              <MessageSquareDot className="hover:cursor-pointer inline ml-2 hover:text-brand_secondary h-4 md:h-10" />
+            </a>
           </div>
         </div>
       </div>
